@@ -5,3 +5,9 @@ authors = ["Jeriel Baptista Verissimo <jeriel.verissimo@protonmail.com>"]
 edition = "2018"
 
 [dependencies]
+
+
+[dependencies.gtk]
+features = ["v3_22"]
+version = "0.7.0"
+
