@@ -3,7 +3,7 @@ use crate::widgets::window::Window;
 use gtk::prelude::*;
 
 pub(crate) struct App {
-    window: Window,
+    _window: Window,
 }
 
 impl App {
@@ -18,6 +18,6 @@ impl App {
 
         gtk::main();
 
-        App { window }
+        App { _window: window }
     }
 }
