@@ -2,8 +2,9 @@ use crate::widgets::window::Window;
 
 use gtk::prelude::*;
 
+#[derive(Clone)]
 pub(crate) struct App {
-    _window: Window,
+    pub window: Window,
 }
 
 impl App {
@@ -14,10 +15,14 @@ impl App {
 
         let window = Window::new();
 
-        window.main_window.show_all();
+        let app = App { window };
+
+        app.create_actions();
+
+        app.window.main_window.show_all();
 
         gtk::main();
 
-        App { _window: window }
+        app
     }
 }
