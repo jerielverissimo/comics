@@ -10,6 +10,7 @@ pub struct Window {
     pub title_bar_stack: gtk::Stack,
     pub select_books_headbar: gtk::HeaderBar,
     pub view_books_headbar: gtk::HeaderBar,
+    pub main_content: gtk::Stack,
 }
 
 impl Window {
@@ -21,6 +22,7 @@ impl Window {
         let select_books_headbar = Self::build_select_books_headbar(&builder);
         let view_books_headbar = Self::build_view_books_headbar(&builder);
         let mut buttons = HashMap::new();
+        let main_content = Self::build_main_content(&builder);
 
         Self::add_button(&builder, &mut buttons, "btn_select_mode");
         Self::add_button(&builder, &mut buttons, "btn_cancel_select_mode");
@@ -31,6 +33,7 @@ impl Window {
             select_books_headbar,
             view_books_headbar,
             buttons,
+            main_content,
         }
     }
 
@@ -69,6 +72,14 @@ impl Window {
             .expect("Can't find select_books_headbar in ui file!");
 
         view_books_headbar
+    }
+
+    fn build_main_content(builder: &gtk::Builder) -> gtk::Stack {
+        let main_content: gtk::Stack = builder
+            .get_object("main_content")
+            .expect("Can't find main_content in ui file!");
+
+        main_content
     }
 
     fn add_button(
